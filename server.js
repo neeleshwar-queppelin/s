@@ -29,10 +29,12 @@ app.get("/", (req, res) => {
   res.status(201).send("HOME");
 });
 
+//ping route
 app.get("/ping", (req, res) => {
   res.status(201).send({ ok: true, msg: "pong" });
 });
 
+//check info route
 app.post("/info", (req, res) => {
   console.log(req.body);
   if (req.body.user === "alice") {
@@ -66,6 +68,7 @@ app.post("/info", (req, res) => {
   }
 });
 
+//get conversations route
 app.get("/conversations", (req, res) => {
   db.collection("chats")
     .find()
@@ -78,6 +81,7 @@ app.get("/conversations", (req, res) => {
     });
 });
 
+//mutations in conversations route
 app.post("/mutations", (req, res) => {
   console.log("req.body");
   console.log(req.body);
@@ -110,6 +114,7 @@ app.post("/mutations", (req, res) => {
         },
       ],
     };
+    //insert mmessage into db
     db.collection("chats").insertOne(convo, (err, result) => {
       if (err) throw err;
       console.log(result);
@@ -119,6 +124,7 @@ app.post("/mutations", (req, res) => {
       text: req.body.data.text, //need to add the old text along
     });
   } else if (req.body.data.type == "delete") {
+    //delete a message
     console.log("DELETING", req.body);
 
     //get Last mutation
@@ -143,6 +149,7 @@ app.post("/mutations", (req, res) => {
   }
 });
 
+//for production deployment
 if (process.env.NODE_ENV == "production") {
   app.use(express.static("client/build"));
 }
