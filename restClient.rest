@@ -1,0 +1,30 @@
+###
+GET http://localhost:8080/
+
+###
+GET http://localhost:8080/ping
+
+###
+GET http://localhost:8080/info
+###
+GET http://localhost:8080/conversations
+
+###
+POST http://localhost:8080/mutations HTTP/1.1
+Content-Type: application/json
+
+{
+    "author":"bob",
+    "origin":{
+        "alice":"5",
+        "bob":"3"
+    },
+    "conversationId":341, 
+    "data":{
+            "type":"delete",
+            "index":"number",
+            "length":"textLength",
+            "text":"mongo text"
+     }
+}
+
