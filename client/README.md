@@ -1,6 +1,8 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is made with [Create React App](https://github.com/facebook/create-react-app).
+Backend-nodeJS 
+Front End- ReactJS and Tailwind.css
 
 ## Available Scripts
 
